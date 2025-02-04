@@ -1,55 +1,22 @@
-/* 
-Have the function MinWindowSubstring(strArr) take the array of strings stored in strArr,
-which will contain only two strings, the first parameter being the string N and the second parameter being a string K of some characters,
-and your goal is to determine the smallest substring of N that contains all the characters in K.
-*/
+/**
+ * Given a string `num` representing a non-negative integer `num`, and an integer `k`,
+  return the smallest possible integer after removing `k` digits from `num`.
+ */
 
-function MinWindowSubstring(strArr) {
-  const [N, K] = strArr;
-  const charCount = {};
-  let required = 0;
+function removeKdigits(num, k) {
+  const arr = [];
 
-  // Count characters in K
-  for (let char of K) {
-    if (!charCount[char]) {
-      charCount[char] = 0;
+  for (let digit of num) {
+    while (k > 0 && arr.length > 0 && arr[arr.length - 1] > digit) {
+      arr.pop();
+
+      k--;
     }
-    charCount[char]++;
-    required++;
+    arr.push(digit);
   }
 
-  let left = 0,
-    right = 0;
-  let minLength = Infinity;
-  let minSubstring = "";
-
-  while (right < N.length) {
-    if (charCount[N[right]] !== undefined) {
-      charCount[N[right]]--;
-      if (charCount[N[right]] >= 0) {
-        required--;
-      }
-    }
-
-    while (required === 0) {
-      if (right - left + 1 < minLength) {
-        minLength = right - left + 1;
-        minSubstring = N.substring(left, right + 1);
-      }
-
-      if (charCount[N[left]] !== undefined) {
-        charCount[N[left]]++;
-        if (charCount[N[left]] > 0) {
-          required++;
-        }
-      }
-      left++;
-    }
-    right++;
-  }
-
-  return minSubstring;
+  let result = arr.join("");
+  return result;
 }
 
-// Example usage
-console.log(MinWindowSubstring(["aaabaaddae", "aed"])); // Output: "dae"
+console.log(removeKdigits("1432219", 3));
