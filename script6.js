@@ -8,52 +8,37 @@ if strArr is ["aaabaaddae", "aed"] then the smallest substring of N that contain
 So for this example your program should return the string dae.
 */
 
-var MinWindowSubstring = function (strArr) {
-  const s = strArr[0];
-  const t = strArr[1];
-  if (!s || !t || s.length < t.length) {
-    return "";
-  }
+function MinWindowSubstring(strArr) {
+  const N = strArr[0]; // Main string
+  const K = strArr[1]; // Characters to find
+  let smallest = ""; // Store the smallest substring
 
-  const tMap = new Map();
-  for (const char of t) {
-    tMap.set(char, (tMap.get(char) || 0) + 1);
-  }
+  // Loop through all possible substrings of N
+  for (let i = 0; i < N.length; i++) {
+    for (let j = i + 1; j <= N.length; j++) {
+      const substring = N.slice(i, j); // Current substring
 
-  let left = 0;
-  let right = 0;
-  let minWindow = "";
-  let minLength = Infinity;
-  let matchCount = 0;
-  const window = new Map();
-
-  while (right < s.length) {
-    const char = s[right];
-    if (tMap.has(char)) {
-      window.set(char, (window.get(char) || 0) + 1);
-      if (window.get(char) <= tMap.get(char)) {
-        matchCount++;
-      }
-    }
-
-    while (matchCount === t.length) {
-      const windowLength = right - left + 1;
-      if (windowLength < minLength) {
-        minLength = windowLength;
-        minWindow = s.substring(left, right + 1);
-      }
-      const leftChar = s[left];
-      if (tMap.has(leftChar)) {
-        window.set(leftChar, window.get(leftChar) - 1);
-        if (window.get(leftChar) < tMap.get(leftChar)) {
-          matchCount--;
+      // Check if the substring contains all characters of K
+      let containsAll = true;
+      for (const char of K) {
+        if (!substring.includes(char)) {
+          containsAll = false;
+          break;
         }
       }
-      left++;
-    }
-    right++;
-  }
-  return minWindow;
-};
 
-console.log(minWindow("aaabaaddae", "aed"));
+      // If it contains all characters and is smaller than the current smallest, update
+      if (
+        containsAll &&
+        (smallest === "" || substring.length < smallest.length)
+      ) {
+        smallest = substring;
+      }
+    }
+  }
+
+  return smallest;
+}
+
+// Example usage:
+console.log(MinWindowSubstring(["aaabaaddae", "aed"])); // Output: "dae"
