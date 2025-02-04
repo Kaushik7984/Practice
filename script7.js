@@ -12,6 +12,7 @@ function removeKdigits(num, k) {
 
       k--;
     }
+
     arr.push(digit);
   }
 

@@ -40,5 +40,4 @@ function MinWindowSubstring(strArr) {
   return smallest;
 }
 
-// Example usage:
-console.log(MinWindowSubstring(["aaabaaddae", "aed"])); // Output: "dae"
+console.log(MinWindowSubstring(["aaabaaddae", "aed"]));
