@@ -6,7 +6,7 @@ function mergeArrays(arr1, arr2) {
   return arr3;
 }
 
-let arr1 = [1, 3, 5, 4, 755];
+let arr1 = [1, 3, 5, 4, 11];
 let arr2 = [2, 4, 6, 8];
 let arr3 = mergeArrays(arr1, arr2);
 
