@@ -11,3 +11,4 @@ let arr2 = [2, 4, 6, 8];
 let arr3 = mergeArrays(arr1, arr2);
 
 console.log(arr3.join(" "));
+//  this is updated code
