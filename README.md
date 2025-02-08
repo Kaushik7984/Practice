@@ -1,1 +1,1 @@
-# Practising JavaScript
+# Practising JavaScript & Git
