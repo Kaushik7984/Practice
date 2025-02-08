@@ -1,5 +1,5 @@
 # Practising JavaScript & Git
 
-# first
+# add some new
 
-# second
+# add some second
