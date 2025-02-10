@@ -30,6 +30,6 @@ function LongestPalindromicSubstring(str) {
   return longest;
 }
 // Test the function
-console.log(LongestPalindromicSubstring("babad")); // Output: "bab"
-console.log(LongestPalindromicSubstring("test")); // Output: ""
+console.log(LongestPalindromicSubstring("babad"));
+console.log(LongestPalindromicSubstring("test"));
 console.log(LongestPalindromicSubstring("testyourskil%lmadaml%l"));
