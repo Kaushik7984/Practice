@@ -9,16 +9,14 @@ So for this example your program should return the string dae.
 */
 
 function MinWindowSubstring(strArr) {
-  const N = strArr[0]; // Main string
-  const K = strArr[1]; // Characters to find
-  let smallest = ""; // Store the smallest substring
+  const N = strArr[0];
+  const K = strArr[1];
+  let smallest = "";
 
-  // Loop through all possible substrings of N
   for (let i = 0; i < N.length; i++) {
     for (let j = i + 1; j <= N.length; j++) {
-      const substring = N.slice(i, j); // Current substring
+      const substring = N.slice(i, j);
 
-      // Check if the substring contains all characters of K
       let containsAll = true;
       for (const char of K) {
         if (!substring.includes(char)) {
@@ -27,7 +25,6 @@ function MinWindowSubstring(strArr) {
         }
       }
 
-      // If it contains all characters and is smaller than the current smallest, update
       if (
         containsAll &&
         (smallest === "" || substring.length < smallest.length)
