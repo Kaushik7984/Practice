@@ -20,4 +20,4 @@ function removeKdigits(num, k) {
   return result;
 }
 
-console.log(removeKdigits("1432219", 3));
+console.log(removeKdigits("1432219", 3)); // Output: "1219"
